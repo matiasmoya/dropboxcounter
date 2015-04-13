@@ -1,0 +1,28 @@
+h1 Dropbox Counter test
+
+h2 Dropbox info:
+p There's currently #{@dropboxinfo["contents"].count} files in the folder: #{@dropboxinfo["path"]}
+
+h2 List of documents
+table
+  thead
+    tr
+      th Name
+      th Document
+      th
+      th
+      th
+
+  tbody
+    - @orders.each do |order|
+      tr
+        td = order.name
+        td = order.document
+        td = link_to 'Show', order
+        td = link_to 'Edit', edit_order_path(order)
+        td = link_to 'Destroy', order, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+
+= link_to 'New Order', new_order_path
